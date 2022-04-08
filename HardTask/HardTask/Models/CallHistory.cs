@@ -6,11 +6,19 @@ namespace HardTask.Models
 {
     internal class CallHistory
     {
-        double talkingTimeTotal;
-        DateTime talkingTimeStart = new DateTime();
-        DateTime talkingTimeEnd = new DateTime();
+        //dateTimelari string kimi oturmek olar tolongstring
+        List<callHistory> callHistorys = new List<callHistory>();
+        struct callHistory
+        {
+            double talkingTimeTotal;
+            DateTime talkingTimeStart ;
+            DateTime talkingTimeEnd;
+        }
 
-
-        SortedDictionary<string, object> callHistory = new SortedDictionary<string, object>();
+        public void AddFinishedCall (double totaltime,DateTime start,DateTime end)
+        {
+            callHistory callHistory = new callHistory { }; 
+            callHistorys.Add();
+        }
     }
 }
