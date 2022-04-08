@@ -18,7 +18,7 @@ namespace HardTask.Models
         public void AddFinishedCall (double totaltime,DateTime start,DateTime end)
         {
             callHistory callHistory = new callHistory { }; 
-            callHistorys.Add();
+           
         }
     }
 }

@@ -11,11 +11,11 @@ namespace HardTask.Models
         public void ShowContacts()
         {
             foreach (var number in contacts)
-                Console.WriteLine(number.Value);
+                Console.WriteLine(number.Key+":"+number.Value);
         }
 
-        public void AddContact(string fullname, string number) //Sorted list avtomatik Key-gore sort olur.
-        {                                                      //Ad sirasi ile duzsek Key-e fullname vermeliyik o da ust-uste dusur islemir.stuct ile yoxlamaq olar
+        public void AddContact(string fullname, string number)  
+        {                                                      
             if (number.NumberIsInContacts(contacts))throw new NumberAlreadyExsists("Number already exsist");
             contacts.Add(fullname, number);
         }

@@ -77,17 +77,9 @@ Choise:");
                         break;
                 }
             }
-            if (numberInput.Length > 13 || numberInput.Length < 9) throw new NumberLengthException("Number Length Exception");
+            if (numberInput.Length > 13 || numberInput.Length < 10) throw new NumberLengthException("Number Length Exception");
             return numberInput.ToString();
         }
-
-
-        static public string NameInput()
-        {
-            //a
-            return "";
-        }
-
 
         static public byte ByteInput()
         {
@@ -110,7 +102,14 @@ Choise:");
             return choise;
         }
 
-
-        
+        static public double DoubleInput()
+        {
+            double choise;
+            do
+            {
+                Console.Write("Choise:");
+            } while (!double.TryParse(Console.ReadLine(), out choise));
+            return choise;  
+        }
     }
 }

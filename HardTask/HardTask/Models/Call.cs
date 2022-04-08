@@ -8,11 +8,17 @@ namespace HardTask.Models
 {
     static class Call
     {
-        public static void CallNumber(this Person caller, Person destination)//contact //destination number
+        public static string CallNumber(this Person caller, Person destination)//contact //destination number
         {
             if (caller.CheckBalance())
-                if (destination.Number.NumberIsInContacts(caller.contacts.GetContacts())) Console.WriteLine();
-
+            {
+                if (destination.Number.NumberIsInContacts(caller.contacts.GetContacts())) 
+                {
+                    if (destination.isAvailabe)
+                        return "zeng getdi";
+                }
+            }
+            return "zeng getmedi";
         }
 
 
@@ -26,8 +32,8 @@ namespace HardTask.Models
         {
             while (true)
             {
-                if (caller.Balnce < 0.3) throw new Exception("Balans yoxdu");
-                caller.Balnce -= 0.3;
+                if (caller.Balance < 0.3) throw new Exception("Balans yoxdu");
+                caller.Balance -= 0.3;
                 Thread.Sleep(10000);
             }
         }
@@ -36,13 +42,13 @@ namespace HardTask.Models
 
         static bool CheckBalance(this Person caller)
         {
-            if (caller.Balnce > 0.3) return true;
+            if (caller.Balance > 0.03) return true;
             return false;
         }
 
         static public bool NumberIsInContacts(this string number, SortedDictionary<string, string> contacts)
         {
-            if (contacts.ContainsValue(number)) return true;
+            if (contacts.ContainsValue(number)) return true;  
             return false;
         }
     }

@@ -6,14 +6,16 @@ namespace HardTask.Models
 {
     class Person
     {
-        public string  Name { get; set; }
+        public string Name { get; set; }
         public string Number { get; set; }
-        public double Balnce { get; set; } //balans artirmaq
+        public double Balance { get; set; } //balans artirmaq
+        public bool isAvailabe { get; set; } = true;
+
 
         public PhoneBook contacts;
 
         public CallHistory callHistory;
-        public Person(string name , string number)
+        public Person(string name, string number)
         {
             Name = name;
             Number = number;
@@ -21,6 +23,11 @@ namespace HardTask.Models
             callHistory = new CallHistory();
         }
 
-
+        public void AddBalance(double addedbalance)
+        {
+            if (addedbalance > 0)
+                Balance += addedbalance;
+            else throw new Exception("Cant be Negative");
+        }
     }
 }
