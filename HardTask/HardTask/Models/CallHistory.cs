@@ -9,5 +9,8 @@ namespace HardTask.Models
         double talkingTimeTotal;
         DateTime talkingTimeStart = new DateTime();
         DateTime talkingTimeEnd = new DateTime();
+
+
+        SortedDictionary<string, object> callHistory = new SortedDictionary<string, object>();
     }
 }

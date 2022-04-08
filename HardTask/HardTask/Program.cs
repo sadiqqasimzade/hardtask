@@ -18,10 +18,9 @@ namespace HardTask
             todo:sealed class phonebook-ancaq person yaradilanda cagila bilen (singleton?)
              */
 
-            Person person1 = new Person("sadiq1",InputsAndCheckers.NumberInput());
-            Person person2 = new Person("sadiq1", InputsAndCheckers.NumberInput());
-
-            person1.CallNumber(person2);
+            //Person person1 = new Person("sadiq1",InputsAndCheckers.NumberInput());
+            //Person person2 = new Person("sadiq1", InputsAndCheckers.NumberInput());
+            Console.WriteLine(InputsAndCheckers.NameInput());
             
 
 

@@ -32,7 +32,7 @@ namespace HardTask.Models
             }
         }
 
-        //chain pattern
+       
 
         static bool CheckBalance(this Person caller)
         {

@@ -82,6 +82,13 @@ Choise:");
         }
 
 
+        static public string NameInput()
+        {
+            //a
+            return "";
+        }
+
+
         static public byte ByteInput()
         {
             byte choise;

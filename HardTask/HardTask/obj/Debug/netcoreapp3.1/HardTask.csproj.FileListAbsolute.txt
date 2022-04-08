@@ -26,3 +26,17 @@ C:\Users\admin\Desktop\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.runtim
 C:\Users\admin\Desktop\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.dll
 C:\Users\admin\Desktop\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.pdb
 C:\Users\admin\Desktop\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.genruntimeconfig.cache
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.exe
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.deps.json
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.runtimeconfig.json
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.runtimeconfig.dev.json
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.dll
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\bin\Debug\netcoreapp3.1\HardTask.pdb
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.AssemblyInfo.cs
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.dll
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.pdb
+C:\Users\admin\Desktop\git\Новая папка\HardTask\HardTask\obj\Debug\netcoreapp3.1\HardTask.genruntimeconfig.cache
