@@ -8,17 +8,36 @@ namespace HardTask.Models
 {
     static class Call
     {
-        public static string CallNumber(this Person caller, Person destination)//contact //destination number
+        public static async void CallNumber(this Person caller, Person destination)//contact //destination number
         {
             if (caller.CheckBalance())
             {
                 if (destination.Number.NumberIsInContacts(caller.contacts.GetContacts())) 
                 {
                     if (destination.isAvailabe)
-                        return "zeng getdi";
+                    {
+                        caller.isAvailabe = false;
+                        destination.isAvailabe = false;
+                        DateTime start = DateTime.Now;
+
+                        Task decreaseBalance = new Task(() =>DecreaseBalance(caller));
+                        Task waitingKey = new Task(() => WaitingKey());
+
+                        waitingKey.Start();
+                        decreaseBalance.Start();
+                        Task.WhenAny(waitingKey,decreaseBalance).Wait();
+
+                        //decreaseBalance.Dispose();
+                        //waitingKey.Dispose();
+
+                        DateTime end = DateTime.Now;
+                        TimeSpan total=end.Subtract(start);
+                        caller.isAvailabe = true;
+                        destination.isAvailabe = true;
+                        Console.WriteLine($"Call Ended,Call Length  {total.Hours} Hours,{total.Minutes} Minutes,{total.Seconds} Seconds");
+                    }
                 }
             }
-            return "zeng getmedi";
         }
 
 
@@ -28,17 +47,25 @@ namespace HardTask.Models
             Thread.Sleep(10000);
         }
 
-        static void temp(Person caller)//threading ile acamq
+        static async Task DecreaseBalance(Person caller)//threading ile acamq
         {
             while (true)
             {
-                if (caller.Balance < 0.3) throw new Exception("Balans yoxdu");
-                caller.Balance -= 0.3;
+                Console.WriteLine("Balance:"+caller.Balance);
                 Thread.Sleep(10000);
+                caller.Balance -= 0.03;
+                if (caller.Balance < 0.03) return;
             }
         }
 
-       
+        static async Task  WaitingKey()
+        {
+            while (Console.ReadKey().Key!=ConsoleKey.Enter)
+            { 
+            Console.Clear();
+            }
+            return;
+        }
 
         static bool CheckBalance(this Person caller)
         {

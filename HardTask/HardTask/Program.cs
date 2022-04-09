@@ -22,18 +22,16 @@ namespace HardTask
              */
 
             
-            Person person1 = new Person("Eli", InputsAndCheckers.NumberInput());
+            Person person1 = new Person("Eli", "4254235253");
             Person person2 = new Person("Aysu","08845698520" );
 
             person1.contacts.AddContact("Aysu1", person2.Number);
             person1.contacts.AddContact("Aysu2", "4542352345234");
 
-            person1.AddBalance(1);
+            person1.AddBalance(0.16);
 
-            Console.WriteLine(person1.CallNumber(person2));
-            Console.WriteLine("sonra");
-            person2.isAvailabe = false;
-            Console.WriteLine(person1.CallNumber(person2));
+            person1.CallNumber(person2);
+
        
         }
     }
