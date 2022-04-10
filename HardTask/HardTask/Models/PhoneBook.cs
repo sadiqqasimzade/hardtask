@@ -29,5 +29,10 @@ namespace HardTask.Models
         {
             return contacts;
         }
+
+        public void FindContact(string name)
+        {
+
+        }
     }
 }

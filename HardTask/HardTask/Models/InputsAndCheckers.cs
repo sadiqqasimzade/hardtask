@@ -77,7 +77,7 @@ Choise:");
                         isRunning = false;
                         break;
                     case '*':
-                        if (numberInput.Length >= 1) numberInput.Remove(numberInput.Length - 1, 1);
+                        if (numberInput.Length >= 6) numberInput.Remove(numberInput.Length - 1, 1);
                         break;
                     default:
                         Console.WriteLine("Wrong Input");
@@ -85,7 +85,7 @@ Choise:");
                 }
                 Console.Beep();
             }
-            if (numberInput.Length > 13 || numberInput.Length < 10) throw new NumberLengthException("Number Length Exception");
+            if (numberInput.Length > 14 || numberInput.Length < 10) throw new NumberLengthException("Number Length Exception");
             person.Number = numberInput.ToString();
         }
 
