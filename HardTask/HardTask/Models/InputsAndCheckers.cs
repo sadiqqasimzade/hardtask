@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using HardTask.CustomException;
 namespace HardTask.Models
 {
-    internal class InputsAndCheckers
+    abstract class InputsAndCheckers
     {
         static public void NumberInput(Person person)
         {
@@ -16,7 +16,7 @@ namespace HardTask.Models
             char choise;
             bool isRunning = true;
             OperatorInput(out string operatorname,out string operatorcode);
-
+            person.phoneOperator.OperatorName = operatorname;
 
                 numberInput.Append("994"+operatorcode);
             while (numberInput.Length <= 13 && isRunning)
@@ -125,7 +125,7 @@ Choise:");
             int choise;
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var @enum in Enum.GetValues(typeof(Operator.Operators)))
-                stringBuilder.Append($"{(int)@enum}){@enum.ToString()} ");
+                stringBuilder.Append($"{(int)@enum}){@enum} ");
             do
             {
                 choise = NumberInput<int>("Chose Operator\n" + stringBuilder + "\nChoise");

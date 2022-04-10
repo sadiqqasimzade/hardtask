@@ -13,30 +13,30 @@ namespace HardTask.Models
             {
                 if (NumberIsInContacts(destination.Number, caller.contacts.GetContacts()))
                 {
-                    if (destination.isAvailabe)
+                    if (destination.IsAvailabe)
                     {
                         Wait(destination);
 
-                        caller.isAvailabe = false;
-                        destination.isAvailabe = false;
+                        caller.IsAvailabe = false;
+                        destination.IsAvailabe = false;
                         double startbalance = caller.Balance;
                         DateTime start = DateTime.Now;
 
+                        double tarif=caller.phoneOperator.Tarif;
+                        if (!caller.phoneOperator.OperatorName.Equals(destination.phoneOperator.OperatorName)) tarif *= 2;
 
-                        Task decreaseBalance = new Task(() => DecreaseBalance(caller));
+                        Task decreaseBalance = new Task(() => DecreaseBalance(caller,tarif));
                         Task waitingKey = new Task(() => WaitingKey(caller));
-
 
                         waitingKey.Start();
                         decreaseBalance.Start();
                         Task.WhenAny(waitingKey, decreaseBalance).Wait();
 
-
                         DateTime end = DateTime.Now;
-                        caller.isAvailabe = true;
-                        destination.isAvailabe = true;
+                        caller.IsAvailabe = true;
+                        destination.IsAvailabe = true;
                         caller.callHistory.AddFinishedCall(start, end, destination.Name);
-                        Console.WriteLine($"Call Ended,Call Length:{end.Subtract(start).ToString(@"hh\:mm\:ss")},Money used:{startbalance - caller.Balance},Money left:{Math.Round(caller.Balance, 3)}");
+                        Console.WriteLine($"Call Ended,Call Length:{end.Subtract(start):hh\\:mm\\:ss},Money used:{startbalance - caller.Balance},Money left:{Math.Round(caller.Balance, 3)}");
                     }
                 }
             }
@@ -52,23 +52,23 @@ namespace HardTask.Models
             Console.WriteLine(destination.Name + " Is on Phone");
         }
 
-        static void DecreaseBalance(Person caller)//threading ile acamq
+        static void DecreaseBalance(Person caller,double tarif)//threading ile acamq
         {
             while (true)
             {
-                caller.Balance -= caller.phoneOperator.Tarif ;
+                caller.Balance -= tarif ;
                 Thread.Sleep(10000);
-                if (caller.Balance < 0.03 || caller.isAvailabe) { caller.isAvailabe = true; return; }
+                if (caller.Balance < tarif || caller.IsAvailabe) { caller.IsAvailabe = true; return; }
             }
         }
 
         static void WaitingKey(Person caller)//threadin ile acmaq
         {
-            while (Console.ReadKey().Key != ConsoleKey.Enter || caller.isAvailabe)
+            while (Console.ReadKey().Key != ConsoleKey.Enter || caller.IsAvailabe)
             {
                 Console.Clear();
             }
-            caller.isAvailabe = true;
+            caller.IsAvailabe = true;
             return;
         }
 

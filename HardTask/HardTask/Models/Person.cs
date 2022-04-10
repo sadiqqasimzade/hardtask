@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace HardTask.Models
@@ -8,9 +9,9 @@ namespace HardTask.Models
     {
         public string Name { get; set; }
         public string Number { get; set; }
-        public double Balance { get; set; } //balans artirmaq
-        public bool isAvailabe { get; set; } = true;
-
+        public double Balance { get; set; } 
+        public bool IsAvailabe { get; set; } = true;
+        public MethodInfo methodInfo { get; set; }
 
         public PhoneBook contacts;
 
