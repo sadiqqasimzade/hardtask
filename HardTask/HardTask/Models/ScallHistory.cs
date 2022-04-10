@@ -8,7 +8,6 @@ namespace HardTask.Models
     {
         //dateTimelari string kimi oturmek olar tolongstring
         List<ScallHistory> callHistorys = new List<ScallHistory>();
-        ScallHistory callHistory;
         struct ScallHistory //1)liste rahat yigilir 2)instance lazim deyil 3)rahat deyismek olar
         {
             public string destinationName;
@@ -19,8 +18,7 @@ namespace HardTask.Models
         
         public void AddFinishedCall(DateTime start, DateTime end, string destinationname)
         {
-            callHistory = new ScallHistory { talkingTimeStart = start, talkingTimeEnd = end, total = end.Subtract(start).ToString(@"hh\:mm\:ss"), destinationName = destinationname };
-            callHistorys.Add(callHistory);
+            callHistorys.Add(new ScallHistory { talkingTimeStart = start, talkingTimeEnd = end, total = end.Subtract(start).ToString(@"hh\:mm\:ss"), destinationName = destinationname });
         }
 
         public void ClearHistory()
@@ -33,8 +31,8 @@ namespace HardTask.Models
         {
             callHistorys.ForEach((x) =>
             {
-                foreach (var field in callHistory.GetType().GetFields())
-                    Console.WriteLine(field.GetValue(callHistory));
+                foreach (var field in x.GetType().GetFields())
+                    Console.WriteLine(field.GetValue(x));
                 Console.WriteLine("-------------------");
             }
             );

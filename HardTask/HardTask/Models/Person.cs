@@ -11,17 +11,15 @@ namespace HardTask.Models
         public string Number { get; set; }
         public double Balance { get; set; } 
         public bool IsAvailabe { get; set; } = true;
-        public MethodInfo methodInfo { get; set; }
+        public MethodInfo Ringtone { get; set; } = typeof(Ringtones).GetMethod("Default");
 
         public PhoneBook contacts;
 
         public CallHistory callHistory;
 
         public Operator phoneOperator;
-        public Person(string name, string number)
+        public Person()
         {
-            Name = name;
-            Number = number;
             contacts = new PhoneBook();
             callHistory = new CallHistory();
             phoneOperator = new Operator("Azarcell",0.03);
@@ -32,6 +30,11 @@ namespace HardTask.Models
             if (addedbalance > 0)
                 Balance += addedbalance;
             else throw new Exception("Cant be Negative");
+        }
+        public override string ToString()
+        {
+            return $@"Full Name-{Name}
+Number-{Number}";
         }
     }
 }

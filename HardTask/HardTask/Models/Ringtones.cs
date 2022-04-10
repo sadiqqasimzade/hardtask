@@ -22,7 +22,6 @@ namespace HardTask.Models
             }
         }
 
-
         public static void Beethoven()
         {
             Console.Beep(659, 120);
@@ -508,7 +507,14 @@ namespace HardTask.Models
             Console.Beep(523, 600);
             Thread.Sleep(600);
         }
-
+        public static void Default()
+        {
+            Console.Beep(392, 300);
+            Console.Beep(659, 300);
+            Console.Beep(587, 300);
+            Console.Beep(523, 300);
+            Console.Beep(392, 600);
+        }
 
     }
 }

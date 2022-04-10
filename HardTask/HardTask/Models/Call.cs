@@ -46,6 +46,7 @@ namespace HardTask.Models
 
         static void Wait(Person destination) 
         {
+            destination.Ringtone.Invoke(null, null);
             Console.WriteLine("Waiting " + destination.Name + " to answer");
             Thread.Sleep(10000);
             Console.Clear();
@@ -76,7 +77,11 @@ namespace HardTask.Models
         {
             if (caller.Balance > caller.phoneOperator.Tarif)
                 return true;
-            return false;
+            else
+            {
+                Console.WriteLine("You dont have enough money");
+                return false;
+            }
         }
 
         static public bool NumberIsInContacts(string number, SortedDictionary<string, string> contacts)

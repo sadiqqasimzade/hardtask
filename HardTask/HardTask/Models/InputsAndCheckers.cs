@@ -139,7 +139,7 @@ Choise:");
             } while (true);
         }
 
-        static T NumberInput<T>(string str)
+        static public T NumberInput<T>(string str)
         {
         Point:
             try
@@ -156,7 +156,16 @@ Choise:");
             }
         }
 
-
+        public static string NameInput()
+        {
+            string name;
+            do
+            {
+                Console.Write("Name:");
+                name= Console.ReadLine();
+            } while (String.IsNullOrEmpty(name)||String.IsNullOrWhiteSpace(name));
+            return name;
+        }
 
     }
 }
