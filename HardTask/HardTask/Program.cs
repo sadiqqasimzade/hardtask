@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using HardTask.Models;
 namespace HardTask
@@ -29,7 +30,25 @@ namespace HardTask
             !!!! *-metodu
 
              */
-            Ringtones.ringTones.ForEach(x => x.Invoke(null,null));
+            /*
+             
+             
+             1)yeni person elave etemek 
+             2) Working with contacts
+                1)showall
+                2)person1 person2 .........    person1->person2
+                3)personu contactdan silmek
+             3) callhistoy
+               1)showall
+               2)delete history
+             4)AddBalance
+             5)Call
+             
+             
+             
+             */
+            List<Person> persons=new List<Person>();
+            
 
             Person person1 = new Person("Eli", "4254235253");
             InputsAndCheckers.NumberInput(person1);
@@ -40,6 +59,7 @@ namespace HardTask
 
             person1.AddBalance(0.16);
 
+            Call.CallNumber(person1, person2);
             Call.CallNumber(person1, person2);
 
             person1.callHistory.ShowHistory();
