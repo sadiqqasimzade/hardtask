@@ -1,40 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace HardTask.Models
 {
-    static class Call
+    abstract class Call
     {
-        public static async void CallNumber(this Person caller, Person destination)//contact //destination number
+        public static void CallNumber(Person caller, Person destination)
         {
-            if (caller.CheckBalance())
+            if (CheckBalance(caller))
             {
-                if (destination.Number.NumberIsInContacts(caller.contacts.GetContacts())) 
+                if (NumberIsInContacts(destination.Number, caller.contacts.GetContacts()))
                 {
                     if (destination.isAvailabe)
                     {
+                        Wait(destination);
+
                         caller.isAvailabe = false;
                         destination.isAvailabe = false;
+                        double startbalance = caller.Balance;
                         DateTime start = DateTime.Now;
 
-                        Task decreaseBalance = new Task(() =>DecreaseBalance(caller));
-                        Task waitingKey = new Task(() => WaitingKey());
+
+                        Task decreaseBalance = new Task(() => DecreaseBalance(caller));
+                        Task waitingKey = new Task(() => WaitingKey(caller));
+
 
                         waitingKey.Start();
                         decreaseBalance.Start();
-                        Task.WhenAny(waitingKey,decreaseBalance).Wait();
+                        Task.WhenAny(waitingKey, decreaseBalance).Wait();
 
-                        //decreaseBalance.Dispose();
-                        //waitingKey.Dispose();
 
                         DateTime end = DateTime.Now;
-                        TimeSpan total=end.Subtract(start);
                         caller.isAvailabe = true;
                         destination.isAvailabe = true;
-                        Console.WriteLine($"Call Ended,Call Length  {total.Hours} Hours,{total.Minutes} Minutes,{total.Seconds} Seconds");
+                        caller.callHistory.AddFinishedCall(start, end, destination.Name);
+                        Console.WriteLine($"Call Ended,Call Length:{end.Subtract(start).ToString(@"hh\:mm\:ss")},Money used:{startbalance - caller.Balance},Money left:{Math.Round(caller.Balance, 3)}");
                     }
                 }
             }
@@ -42,40 +44,45 @@ namespace HardTask.Models
 
 
 
-        static void Wait() //await mesqul olanda
+        static void Wait(Person destination) 
         {
+            Console.WriteLine("Waiting " + destination.Name + " to answer");
             Thread.Sleep(10000);
+            Console.Clear();
+            Console.WriteLine(destination.Name + " Is on Phone");
         }
 
-        static async Task DecreaseBalance(Person caller)//threading ile acamq
+        static void DecreaseBalance(Person caller)//threading ile acamq
         {
             while (true)
             {
-                Console.WriteLine("Balance:"+caller.Balance);
+                caller.Balance -= caller.phoneOperator.Tarif ;
                 Thread.Sleep(10000);
-                caller.Balance -= 0.03;
-                if (caller.Balance < 0.03) return;
+                if (caller.Balance < 0.03 || caller.isAvailabe) { caller.isAvailabe = true; return; }
             }
         }
 
-        static async Task  WaitingKey()
+        static void WaitingKey(Person caller)//threadin ile acmaq
         {
-            while (Console.ReadKey().Key!=ConsoleKey.Enter)
-            { 
-            Console.Clear();
+            while (Console.ReadKey().Key != ConsoleKey.Enter || caller.isAvailabe)
+            {
+                Console.Clear();
             }
+            caller.isAvailabe = true;
             return;
         }
 
-        static bool CheckBalance(this Person caller)
+        static bool CheckBalance(Person caller)
         {
-            if (caller.Balance > 0.03) return true;
+            if (caller.Balance > caller.phoneOperator.Tarif)
+                return true;
             return false;
         }
 
-        static public bool NumberIsInContacts(this string number, SortedDictionary<string, string> contacts)
+        static public bool NumberIsInContacts(string number, SortedDictionary<string, string> contacts)
         {
-            if (contacts.ContainsValue(number)) return true;  
+            if (contacts.ContainsValue(number))
+                return true;
             return false;
         }
     }

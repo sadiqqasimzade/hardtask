@@ -16,7 +16,7 @@ namespace HardTask.Models
 
         public void AddContact(string fullname, string number)  
         {                                                      
-            if (number.NumberIsInContacts(contacts))throw new NumberAlreadyExsists("Number already exsist");
+            if (Call.NumberIsInContacts(number,contacts))throw new NumberAlreadyExsists("Number already exsist");
             contacts.Add(fullname, number);
         }
 

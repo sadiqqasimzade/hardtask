@@ -16,23 +16,34 @@ namespace HardTask
 
             2 proekt olur json faylla bir birine zeng edirler
             
-            !!!! *-metodu
 
             todo:sealed class phonebook-ancaq person yaradilanda cagila bilen (singleton?)
+
+            //personun adi ve nomresi yaradilandan sonra verilir
+
+            1)InputCheckersde telefonu deyismek
+            2)2 yeni knopka sari qirmizi
+            3)Operator secimine gore Telefon inputunda avtomatik 055/050/070 ... yerine yazmaq 
+
+            !!!! *-metodu
+
              */
 
-            
             Person person1 = new Person("Eli", "4254235253");
-            Person person2 = new Person("Aysu","08845698520" );
+            InputsAndCheckers.NumberInput(person1);
+            Person person2 = new Person("Aysu", "08845698520");
 
             person1.contacts.AddContact("Aysu1", person2.Number);
             person1.contacts.AddContact("Aysu2", "4542352345234");
 
             person1.AddBalance(0.16);
 
-            person1.CallNumber(person2);
+            Call.CallNumber(person1, person2);
 
-       
+            person1.callHistory.ShowHistory();
+
+          
+
         }
     }
 }

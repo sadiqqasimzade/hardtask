@@ -7,11 +7,18 @@ namespace HardTask.Models
 {
     internal class InputsAndCheckers
     {
-        static public string NumberInput()
+        static public void NumberInput(Person person)
         {
+            //number remove limit 5 etmek?
+            //regexle yoxlamaq?
+
             StringBuilder numberInput = new StringBuilder(); //max:9940557020323-13 min-557020323-9
             char choise;
             bool isRunning = true;
+            OperatorInput(out string operatorname,out string operatorcode);
+
+
+                numberInput.Append("994"+operatorcode);
             while (numberInput.Length <= 13 && isRunning)
             {
                 Console.Clear();
@@ -76,9 +83,10 @@ Choise:");
                         Console.WriteLine("Wrong Input");
                         break;
                 }
+                Console.Beep();
             }
             if (numberInput.Length > 13 || numberInput.Length < 10) throw new NumberLengthException("Number Length Exception");
-            return numberInput.ToString();
+            person.Number = numberInput.ToString();
         }
 
         static public byte ByteInput()
@@ -111,5 +119,44 @@ Choise:");
             } while (!double.TryParse(Console.ReadLine(), out choise));
             return choise;  
         }
+
+        public static void OperatorInput(out string operatorname,out string operatorcode)
+        {
+            int choise;
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var @enum in Enum.GetValues(typeof(Operator.Operators)))
+                stringBuilder.Append($"{(int)@enum}){@enum.ToString()} ");
+            do
+            {
+                choise = NumberInput<int>("Chose Operator\n" + stringBuilder + "\nChoise");
+                foreach (var @enum in Enum.GetValues(typeof(Operator.Operators)))
+                    if (choise ==(int) @enum)
+                    {
+                        operatorcode =Convert.ToString( (int)@enum);
+                        operatorname = @enum.ToString();
+                        return;
+                    }
+            } while (true);
+        }
+
+        static T NumberInput<T>(string str)
+        {
+        Point:
+            try
+            {
+                Console.Write("-----------------\n" + str + " :");
+                dynamic temp = Console.ReadLine();
+                temp = (T)Convert.ChangeType(temp, typeof(T));
+                return temp;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                goto Point;
+            }
+        }
+
+
+
     }
 }

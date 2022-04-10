@@ -15,12 +15,15 @@ namespace HardTask.Models
         public PhoneBook contacts;
 
         public CallHistory callHistory;
+
+        public Operator phoneOperator;
         public Person(string name, string number)
         {
             Name = name;
             Number = number;
             contacts = new PhoneBook();
             callHistory = new CallHistory();
+            phoneOperator = new Operator("Azarcell",0.03);
         }
 
         public void AddBalance(double addedbalance)
