@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using HardTask.Models;
 namespace HardTask
 {
@@ -28,6 +29,71 @@ namespace HardTask
             !!!! *-metodu
 
              */
+            while (true)
+            {
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(783, 300);
+                Console.Beep(523, 300);
+                Console.Beep(587, 300);
+                Console.Beep(659, 300);
+                Console.Beep(261, 300);
+                Console.Beep(293, 300);
+                Console.Beep(329, 300);
+                Console.Beep(698, 300);
+                Console.Beep(698, 300);
+                Console.Beep(698, 300);
+                Thread.Sleep(300);
+                Console.Beep(698, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(587, 300);
+                Console.Beep(587, 300);
+                Console.Beep(659, 300);
+                Console.Beep(587, 300);
+                Thread.Sleep(300);
+                Console.Beep(783, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(659, 300);
+                Console.Beep(783, 300);
+                Console.Beep(523, 300);
+                Console.Beep(587, 300);
+                Console.Beep(659, 300);
+                Console.Beep(261, 300);
+                Console.Beep(293, 300);
+                Console.Beep(329, 300);
+                Console.Beep(698, 300);
+                Console.Beep(698, 300);
+                Console.Beep(698, 300);
+                Thread.Sleep(300);
+                Console.Beep(698, 300);
+                Console.Beep(659, 300);
+                Console.Beep(659, 300);
+                Thread.Sleep(300);
+                Console.Beep(783, 300);
+                Console.Beep(783, 300);
+                Console.Beep(698, 300);
+                Console.Beep(587, 300);
+                Console.Beep(523, 600);
+                Thread.Sleep(600);
+            }
 
             Person person1 = new Person("Eli", "4254235253");
             InputsAndCheckers.NumberInput(person1);
