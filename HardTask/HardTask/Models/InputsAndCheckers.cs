@@ -19,7 +19,7 @@ namespace HardTask.Models
             person.phoneOperator.OperatorName = operatorname;
 
                 numberInput.Append("994"+operatorcode);
-            while (numberInput.Length <= 13 && isRunning)
+            do
             {
                 Console.Clear();
                 Console.Write(@$"
@@ -84,8 +84,25 @@ Choise:");
                         break;
                 }
                 Console.Beep();
-            }
-            if (numberInput.Length > 14 || numberInput.Length < 10) throw new NumberLengthException("Number Length Exception");
+            } while (numberInput.Length <= 11 && isRunning);
+            if (numberInput.Length !=12) throw new NumberLengthException("Number Length Exception");
+            Console.Clear();
+            Console.Write(@$"
+        {numberInput}
+-------------------------
+|       |       |       |
+|   1   |   2   |   3   |
+-------------------------
+|       |       |       |
+|   4   |   5   |   6   |
+-------------------------
+|       |       |       |
+|   7   |   8   |   9   |
+-------------------------
+|remove1|       |       |
+|char  *|   0   | #-stop|
+-------------------------
+Choise:");
             person.Number = numberInput.ToString();
         }
 
